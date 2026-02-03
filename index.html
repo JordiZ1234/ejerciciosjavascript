@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .caja {
+        border: 2px solid #333;
+        padding: 1rem;
+        margin: 0.5rem;
+        cursor: pointer;
+      }
+      .destacado {
+        background-color: #ffeb3b;
+      }
+      .oculto {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="titulo">Exercicis JavaScript</h1>
+    <div id="contenido" class="caja">Contingut inicial</div>
+    <input type="text" id="entrada" placeholder="Escriu aquí" value="" />
+    <button id="btn">Clica'm</button>
+    <div id="resultado"></div>
+    <script>
+        console.log("Hola, món!")
+        let nom = "Anna"
+        let cognom = "Garcia"
+        console.log("El meu nom és "+ nom + " " + cognom)
+        function saluda(nom){
+            console.log(nom)
+        }
+        saluda("Hola, Marc!")
+        saluda("Hola, Laura!")
+        saluda("Hola, Pep!")
+
+        let div = document.querySelector("#contenido")
+        div.innerHTML="<strong>He canviat el text!</strong>"
+        div.classList.add("destacado")
+        div.classList.remove("destacado")
+        div.classList.add("destacado")
+
+        const input = document.querySelector("#entrada")
+        const btn = document.querySelector("#btn")
+        function mostraValor(){
+            console.log(input.value)
+        }
+
+        btn.addEventListener("click", mostraValor)
+
+        div.addEventListener("click", comptador)
+
+        let cuenta = 0
+
+        function comptador(){
+            console.log("contador:" + cuenta)
+            cuenta = cuenta + 1
+            div.innerHTML = "Has clicat " + cuenta + " vegades";
+        }
+
+        const result = document.querySelector("#resultado")
+        
+        function copiaInput(){
+            if (input.value === ""){
+                resultado.innerHTML = "No has escrit res";
+            } else {
+                resultado.innerHTML = input.value
+            }
+        }
+
+        btn.addEventListener("click", copiaInput)
+
+        function cambio(){
+            div.classList.toggle("destacado");
+        }
+
+        div.addEventListener("click", cambio)
+
+        const titulo = document.querySelector("#titulo")
+        titulo.innerHTML = ("Salutació")
+
+        function saludar (){
+            const nom = input.value.trim();
+            if (nom === ""){
+                resultado.innerHTML = "Si us plau, escriu el teu nom.";
+            } else {
+                resultado.innerHTML = "Hola, " + nom + "! Benvingut/da."; 
+            }
+        } 
+
+        btn.addEventListener("click", saludar)
+
+    </script>
+</body>
+</html>
