@@ -6,19 +6,39 @@
     <title>Document</title>
 </head>
 <body>
-    <select name="" id="">
-        <option value="">Mustang GT</option>
-        <option value="">Mercedes clase G</option>
-        <option value="">Ford Fiesta</option>
-        <option value="">Rolls Royce</option>
+    <select name="" id="selector">
+        <option id="mustang">Mustang GT</option>
+        <option id="mercedes">Mercedes clase G</option>
+        <option id="ford">Ford Fiesta</option>
+        <option id="rolls">Rolls Royce</option>
     </select>
     <button id="btn">VER</button>
+    <div id="resultado">
+    </div>
     <script>
         //Poner un selector que deiga seleccionar tu coche, y cuando sleciones el coche, aparecera un boton que diga ver, y cuando le des a ver saldra una imagen del coche correspondiende
 
+        //creamos variables para todas las opciones
+        let mustang = document.querySelector("#mustang")
+        let mercedes = document.querySelector("#mercedes")
+        let ford = document.querySelector("#ford")
+        let rolls = document.querySelector("#rolls")
+        let btn = document.querySelector("#btn")
+        let resultado = document.querySelector("#resultado")
+        let selector = document.querySelector("#selector")
         
-        function ver{
+        btn.addEventListener("click", ver)
 
+        function ver(){
+            if( selector.value === mustang.value){ //Si el valor que seleccionamos en el <select> es exactamente igual al valor del option Mustang mostrara lo siguiente
+                resultado.innerHTML = "<img src=mustang.jpg>"
+            } else if (selector.value === mercedes.value){
+                resultado.innerHTML = "<img src=mercedes.avif>"                
+            } else if (selector.value === ford.value){
+                resultado.innerHTML = "<img src=ford.jpg>"
+            } else if (selector.value === rolls.value){
+                resultado.innerHTML = "<img src=rolls.webp>"
+            }
         }
     </script>
 </body>
