@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .absolute{
+            position: absolute;
+            width: 30px;
+            height: 60px;
+            background-color: red;
+            bottom: 0;
+        }
+        .relative{
+            position: relative;
+            border: 1px solid black;
+            width: 300px;
+            height: 300px;
+            background-color: black;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="relative">
+        <div id="coche" class="absolute">
+
+        </div>
+    </div>
+    <script>
+        let coche = document.querySelector("#coche") 
+        
+        window.addEventListener("keydown", animacion)
+        let posicion = 0;
+        let posiciony = 0;
+        function animacion(){ 
+            if (event.key == "a"){
+                coche.style.left = posicion = posicion - 10
+                coche.style.left = posicion + "px"
+            } else if (event.key == "d"){
+                coche.style.left = posicion = posicion + 10
+                coche.style.left = posicion + "px"
+            } else if (event.key == "w"){
+                coche.style.bottom = posiciony = posiciony + 10
+                coche.style.bottom = posiciony + "px"
+            } else if (event.key == "s"){
+                coche.style.bottom = posiciony = posiciony - 10
+                coche.style.bottom = posiciony + "px"
+            }
+        }
+    </script>
+</body>
+</html>
