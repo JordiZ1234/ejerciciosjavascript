@@ -8,10 +8,11 @@
     <style>
         .absolute{
             position: absolute;
-            width: 30px;
-            height: 60px;
-            background-color: red;
-            bottom: 0;
+            img{
+                width: 20px;
+                justify-content: center;
+                align-items: center;
+            }
         }
         .relative{
             position: relative;
@@ -20,33 +21,65 @@
             height: 300px;
             background-color: black;
         }
+        .main{
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
+
     </style>
 
 </head>
 <body>
-    <div class="relative">
-        <div id="coche" class="absolute">
-
+    <main class="main">
+        <div class="relative">
+            <div id="coche" class="absolute">
+                <img src="https://media.tenor.com/yzVsTWVKKmYAAAAj/pacman.gif" alt="">
+            </div>
         </div>
-    </div>
+    </main>
     <script>
-        let coche = document.querySelector("#coche") 
-        
+        let coche = document.querySelector("#coche")
+        let contenedor = document.querySelector(".relative")
+        let anchoContenedor = contenedor.offsetWidth
+        let altoContenedor = contenedor.offsetHeight
+        let anchoCoche = coche.offsetWidth
+        let altoCoche = coche.offsetHeight
+        let limiteDerecha = anchoContenedor - anchoCoche
+        let limiteIzquierda = 0
+        let limiteArriba = altoContenedor - altoCoche
+        let limiteAbajo = 0
         window.addEventListener("keydown", animacion)
         let posicion = 0;
         let posiciony = 0;
-        function animacion(){ 
+        function animacion(event){ 
             if (event.key == "a"){
                 coche.style.left = posicion = posicion - 10
                 coche.style.left = posicion + "px"
+                coche.style.transform = "rotate(180deg)"
             } else if (event.key == "d"){
                 coche.style.left = posicion = posicion + 10
                 coche.style.left = posicion + "px"
+                coche.style.transform = "rotate(0deg)"
             } else if (event.key == "w"){
                 coche.style.bottom = posiciony = posiciony + 10
                 coche.style.bottom = posiciony + "px"
+                coche.style.transform = "rotate(270deg)"
             } else if (event.key == "s"){
                 coche.style.bottom = posiciony = posiciony - 10
+                coche.style.bottom = posiciony + "px"
+                coche.style.transform = "rotate(90deg)"
+            } if (posicion > limiteDerecha){
+                posicion = limiteIzquierda
+                coche.style.left = posicion + "px"
+            } if(posicion < limiteIzquierda){
+                posicion = limiteDerecha
+                coche.style.left = posicion +"px"
+            } if (posiciony > limiteArriba){
+                posiciony = limiteAbajo
+                coche.style.bottom = posiciony + "px"
+            } if (posiciony < limiteAbajo){
+                posiciony = limiteArriba
                 coche.style.bottom = posiciony + "px"
             }
         }
