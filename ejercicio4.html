@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .absolute{
+            position: absolute;
+            width: 20px;
+            img{
+                width: 20px;
+            }
+        }
+        .relative{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background-color: black;
+        }
+        .main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <main class="main">
+        <div class="relative">
+            <div id="pacman" class="absolute">
+                <img src="https://media.tenor.com/yzVsTWVKKmYAAAAj/pacman.gif" alt="">
+            </div>
+        </div>
+    </main>
+    <script>
+        let pacman = document.querySelector("#pacman")
+        let position = 0;
+        window.addEventListener("keydown", animacion)
+        function animacion(event){
+            if(event.key == "w"){
+                pacman.style.top = position = position - 10
+                pacman.style.top = position + "px"
+            } if (event.key == "s"){
+                pacman.style.top = position = position + 10
+                pacman.style.top = position + "px"
+            }
+        }
+    </script>
+</body>
+</html>
