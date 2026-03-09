@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div{
+            width: 100px;
+            height: 100px;
+        }
+        .verde{
+            background-color: green;
+        }
+        .rojo{
+            background-color: red;
+        }
+        .amarillo{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <input id="nombre" type="text">
+    <input id="apellido" type="text">
+    <button id="btn" >enviar</button>
+
+    <div id="semaforo" class="div" ></div>
+    <button id="verde">verde</button>
+    <button id="rojo">rojo</button>
+    <button id="amarillo">amarillo</button>
+    <script>
+        let nombre = document.querySelector("#nombre")
+        let apellido = document.querySelector("#apellido")
+        let btn = document.querySelector("#btn")
+        let semaforo = document.querySelector("#semaforo")
+        let verde = document.querySelector("#verde")
+        let rojo = document.querySelector("#rojo")
+        let amarillo = document.querySelector("#amarillo")
+        btn.addEventListener("click", formulario)
+        function formulario(){
+            prompt ("Buenas " + nombre.value + apellido.value + " que tal")
+        }
+
+        verde.addEventListener("click", verde1)
+        function verde1(){
+            semaforo.classList.remove("rojo")
+            semaforo.classList.remove("amarillo")
+            semaforo.classList.add("verde")
+        }
+
+        rojo.addEventListener("click", rojo1)
+        function rojo1(){
+            semaforo.classList.remove("verde")
+            semaforo.classList.remove("amarillo")
+            semaforo.classList.add("rojo")
+        }
+
+        amarillo.addEventListener("click", amarillo1)
+        function amarillo1(){
+            semaforo.classList.remove("verde")
+            semaforo.classList.remove("rojo")
+            semaforo.classList.add("amarillo")
+        }
+
+    </script>
+</body>
+</html>
